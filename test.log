@@ -1,0 +1,32 @@
+INFO [2021-08-13 11:46:17] /cache/.bk/env/lib/python3.6/site-packages/celery/beat.py 202 maybe_due 1146 140196627285824 
+ 	 Scheduler: Sending due task every_day_pull_bk_user (apps.system_mgmt.celery_tasks.pull_bk_user) 
+
+INFO [2021-08-13 11:46:17] /cache/.bk/env/lib/python3.6/site-packages/celery/worker/strategy.py 60 task_message_handler 1147 140047629608768 
+ 	 Received task: apps.system_mgmt.celery_tasks.pull_bk_user[72010fb8-770b-42d4-ba09-09043df6f673] 
+
+INFO [2021-08-13 11:46:17] /data/app/code/apps/system_mgmt/celery_tasks.py 18 pull_bk_user 1164 140047629608768 
+ 	 pull bk_user task start 
+
+ERROR [2021-08-13 11:46:18] /cache/.bk/env/lib/python3.6/site-packages/celery/utils/log.py 282 log 1147 140047629608768 
+ 	 Task apps.system_mgmt.celery_tasks.pull_bk_user[72010fb8-770b-42d4-ba09-09043df6f673] raised unexpected: GetDateError() 
+Traceback (most recent call last):
+  File "/cache/.bk/env/lib/python3.6/site-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/cache/.bk/env/lib/python3.6/site-packages/celery/app/trace.py", line 438, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/data/app/code/apps/system_mgmt/celery_tasks.py", line 19, in pull_bk_user
+  File "/data/app/code/apps/system_mgmt/utils.py", line 182, in pull_sys_user
+  File "/data/app/code/apps/system_mgmt/utils.py", line 412, in create
+  File "/data/app/code/apps/system_mgmt/utils.py", line 277, in create
+  File "/data/app/code/apps/system_mgmt/utils.py", line 272, in update_role
+  File "/data/app/code/apps/system_mgmt/utils.py", line 56, in update_role_by_biz
+  File "/data/app/code/common/bk_api_utils/cc.py", line 49, in update_business
+common.exceptions.GetDateError
+INFO [2021-08-13 12:16:17] /cache/.bk/env/lib/python3.6/site-packages/celery/beat.py 202 maybe_due 1146 140196627285824 
+ 	 Scheduler: Sending due task every_day_pull_bk_user (apps.system_mgmt.celery_tasks.pull_bk_user) 
+说啥说啥
+\
+\ss\
+冲冲冲
+\大胆点
+说啥说啥\
