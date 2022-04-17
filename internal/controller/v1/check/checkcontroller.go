@@ -9,13 +9,11 @@ import (
 type CheckController struct {
 	srv srvv1.Service
 }
-func NewCheckController(component store.CmdFactory)*CheckController{
+
+func NewCheckController(component store.CmdFactory) *CheckController {
 	logrus.Info("building new check controller with check store factory")
-<<<<<<< HEAD
-	logrus.Info("building new check controller with check store factory")
-=======
->>>>>>> 20bf7d7c8086156ce39db0c253f52e779279e7b7
+	logrus.Info("")
 	return &CheckController{
-		srv:srvv1.NewService(component),
+		srv: srvv1.NewService(component),
 	}
 }
