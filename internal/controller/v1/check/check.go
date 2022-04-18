@@ -1,7 +1,7 @@
 package check
 
 import (
-	"bluekinghealth/pkg/script"
+	"bluekinghealth/pkg/command"
 	"fmt"
 	"github.com/sirupsen/logrus"
 	"sync"
@@ -25,7 +25,7 @@ func Check() *OriCheckData {
 	}
 }
 
-//check moudle health with script
+//check moudle health with command
 func healthCheck() (map[string]string, error) {
 	moudlelist := []string{
 		"bkssm", "bkiam", "usermgr", "paas", "cmdb", "gse", "job", "consul", "bkmonitorv3",
@@ -41,8 +41,8 @@ func healthCheck() (map[string]string, error) {
 
 }
 func ExeCmd(moudle string, wg *sync.WaitGroup, out *map[string]string) {
-	//fmt.Println(moudle,script.Check_test)
-	moudlecheckoutput, err := exec.Command("/bin/bash", "-c", script.Check_test+moudle).Output()
+	//fmt.Println(moudle,command.Check_test)
+	moudlecheckoutput, err := exec.Command("/bin/bash", "-c", command.Check_test+moudle).Output()
 	if err != nil {
 		fmt.Println("error occured")
 		fmt.Printf("%s", err)
@@ -63,7 +63,7 @@ func moudleHeatlthCheck(moudlelist []string) (map[string]string, error) {
 	}
 	wg.Wait()
 	fmt.Println(outputMap)
-	//moudlecheckoutput,e:=exec.Command("/bin/bash","-c",script.CheckScript,moudle).Output()
+	//moudlecheckoutput,e:=exec.Command("/bin/bash","-c",command.CheckScript,moudle).Output()
 	return outputMap, nil
 
 }

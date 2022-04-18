@@ -12,7 +12,6 @@ type CheckController struct {
 
 func NewCheckController(component store.CmdFactory) *CheckController {
 	logrus.Info("building new check controller with check store factory")
-	logrus.Info("")
 	return &CheckController{
 		srv: srvv1.NewService(component),
 	}

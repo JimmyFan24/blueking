@@ -365,3 +365,16 @@ bk-cmdb-topo.service                    inactive      (dead) 1min 0s ago (code=e
 [6] 14:46:54 [SUCCESS] 10.10.26.71
 [7] 14:46:54 [SUCCESS] 10.10.26.74
 `
+const PaasDataTest = `
+[1] 16:38:14 [SUCCESS] 10.10.26.73
+paas-apigw(http://10.10.26.73:8005/api/healthz/): true
+paas-appengine(http://10.10.26.73:8000/v1/healthz/): true
+paas-esb(http://10.10.26.73:8002/healthz/)   : true
+paas-login(http://10.10.26.73:8003/healthz/) : true
+paas-paas(http://10.10.26.73:8001/healthz/)  : true
+[2] 16:38:14 [SUCCESS] 10.10.26.71
+paas-apigw(http://10.10.26.71:8005/api/healthz/): true
+paas-appengine(http://10.10.26.71:8000/v1/healthz/): true
+paas-esb(http://10.10.26.71:8002/healthz/)   : true
+paas-login(http://10.10.26.71:8003/healthz/) : true
+paas-paas(http://10.10.26.71:8001/healthz/)  : true`

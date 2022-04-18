@@ -1,4 +1,4 @@
-package script
+package command
 
 const CheckScript = `
 #!/usr/bin/env bash
