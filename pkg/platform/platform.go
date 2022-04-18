@@ -4,7 +4,7 @@ package platform
 	//1.执行status脚本,获取打印结果
 	_,e:=exec.Command("/bin/sh","-c",`/data/install/bkcli status all|grep -E "inactive|SUCCESS|deactivating"`).Output()
 	if e!=nil{
-		logrus.Errorf("exec shell script failed:%v",e)
+		logrus.Errorf("exec shell command failed:%v",e)
 		return nil, e
 		os.Exit(1)
 	}

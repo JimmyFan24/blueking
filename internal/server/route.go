@@ -23,6 +23,7 @@ func installController(g *gin.Engine) *gin.Engine {
 			logrus.Info("route regist /v1/check/paas")
 			checkController := check.NewCheckController(component)
 			checkroute.GET("/paas", checkController.PaasCheck)
+			checkroute.GET("/cmdb",checkController.CmdbCheck)
 		}
 
 	}
