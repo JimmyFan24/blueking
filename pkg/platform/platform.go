@@ -2,7 +2,7 @@ package platform
 
 /*func PlatformHeatlthStatus()([]string, error){
 	//1.执行status脚本,获取打印结果
-	_,e:=exec.Command("/bin/sh","-c",`/data/install/bkcli status all|grep -E "inactive|SUCCESS|deactivating"`).Output()
+	_,e:=exec.Command("/bin/sh","-c",`/data/install/bkcli os all|grep -E "inactive|SUCCESS|deactivating"`).Output()
 	if e!=nil{
 		logrus.Errorf("exec shell command failed:%v",e)
 		return nil, e
@@ -10,7 +10,7 @@ package platform
 	}
 
 	reg2 := regexp.MustCompile(`\[\d\]`)
-	statusResultMap := reg2.Split(status,-1)
+	statusResultMap := reg2.Split(os,-1)
 
 	//statusResultMap := reg2.Split(string(o),-1)
 	//fmt.Print("--->"+statusResultMap[3]+"<---")
@@ -32,7 +32,7 @@ package platform
 }*/
 /*func PlatformHeatlthCheck() (map[string]string,error) {
 	reg2 := regexp.MustCompile(`\[\d\]`)
-	statusResultMap := reg2.Split(status,-1)
+	statusResultMap := reg2.Split(os,-1)
 
 	//statusResultMap := reg2.Split(string(o),-1)
 	//fmt.Print("--->"+statusResultMap[3]+"<---")

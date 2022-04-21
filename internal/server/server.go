@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	_ "github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type Server struct {
@@ -36,14 +37,15 @@ func (s *Server) Run() {
 	}
 	fmt.Println(check_test["paas"])
 	r := gin.Default()
+	r.Use(Cors())
 	r.LoadHTMLGlob("C:\\Users\\jimmy\\GolandProjects\\bluekinghealthz\\pkg\\template\\*")
 	r.GET("/index", func(context *gin.Context) {
 		context.HTML(200, "index.html", gin.H{
-			"Title": "this is blueking health check index page",
+			"Title": "this is blueking health health index page",
 		})
 	})
 	r.GET("/health", func(context *gin.Context) {
-		context.HTML(200, "status.html", gin.H{
+		context.HTML(200, "os.html", gin.H{
 			"id0":   0,
 			"id1":   1,
 			"data0": cmdb,
@@ -55,4 +57,24 @@ func (s *Server) ServerRun() {
 	s.Engine = gin.New()
 	installEngine := installController(s.Engine)
 	installEngine.Run(":9999")
+}
+
+func Cors() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		method := c.Request.Method
+
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Headers", "Content-Type,AccessToken,X-CSRF-Token, Authorization, Token")
+		c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		c.Header("Access-Control-Expose-Headers", "Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type")
+		c.Header("Access-Control-Allow-Credentials", "true")
+
+		//放行所有OPTIONS方法
+		if method == "OPTIONS" {
+			c.AbortWithStatus(http.StatusNoContent)
+		}
+		// 处理请求
+		c.Next()
+	}
+
 }

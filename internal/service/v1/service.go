@@ -6,31 +6,36 @@ import (
 )
 
 type Service interface {
-	Check() CheckSrv
-	Status() StatusSrv
+	//Component and service health
+	Health() HealthSrv
+	//Saas health
+	Saas() SaasSrv
+	//Os health
+	OsHealth() OsSrv
 }
 
-func NewService(component store.CmdFactory) Service {
-	logrus.Info("building new service interface  with check factory..")
+func NewService(cmdFactory store.StoreFactory) Service {
+	logrus.Info("building new service interface with health factory..")
 	return &service{
-		component,
+		cmdFactory,
 	}
 }
 
+//一个Serice的实现
 type service struct {
-	Component store.CmdFactory
+	CmdFactory store.StoreFactory
 }
 
-func (s *service) Check() CheckSrv {
-	return newCheckService(s)
+func (s *service) OsHealth() OsSrv {
+	return newOsSrv(s)
 }
 
-func (s service) Status() StatusSrv {
-	panic("implement me")
+func (s *service) Saas() SaasSrv {
+	return newSaasSrv(s)
+}
+
+func (s *service) Health() HealthSrv {
+	return newHealthService(s)
 }
 
 var _ Service = &service{}
-
-func newService() Service {
-	return &service{}
-}

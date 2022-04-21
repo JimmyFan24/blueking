@@ -3,8 +3,8 @@ package main
 import "bluekinghealth/internal/server"
 
 func main() {
-	//1.check linux system environment
-	//2.check all components status
+	//1.health linux system environment
+	//2.health all components os
 	/*statusReslut,err:= platform.PlatformHeatlthStatus()
 	if err!=nil{
 
@@ -17,11 +17,11 @@ func main() {
 	r.LoadHTMLGlob("C:\\Users\\jimmy\\GolandProjects\\bluekinghealthz\\pkg\\template\\*")
 	r.GET("/index", func(context *gin.Context) {
 		context.HTML(200,"index.html",gin.H{
-			"Title":"this is blueking health check index page",
+			"Title":"this is blueking health health index page",
 		})
 	})
-	r.GET("/status", func(context *gin.Context) {
-		context.HTML(200,"status.html",gin.H{
+	r.GET("/os", func(context *gin.Context) {
+		context.HTML(200,"os.html",gin.H{
 			"id0":0,
 			"id1":1,
 			"data0":statusReslut[0],
@@ -31,7 +31,7 @@ func main() {
 	r.Run(":9999")
 
 	*/
-	//3.check saas
+	//3.health saas
 	server.NewServer().ServerRun()
 	//str := ` 16:24:08 [SUCCESS] 10.10.26.73 paas-apigw(http://10.10.26.73:8005/api/healthz/): true paas-appengine(http://10.10.26.73:8000/v1/healthz/): true paas-esb(http://10.10.26.73:8002/healthz/)   : true paas-login(http://10.10.26.73:8003/healthz/) : true paas-paas(http://10.10.26.73:8001/healthz/)  : true `
 	//reg,_ := regexp.Compile(`\n`)

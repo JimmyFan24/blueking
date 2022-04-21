@@ -110,7 +110,7 @@ case $module in
         source <(/opt/py36/bin/python ${SELF_DIR}/qq.py -p ${BK_PKG_SRC_PATH}/${target_name}/projects.yaml -P ${SELF_DIR}/bin/default/port.yaml)
         if [ -z "${project}" ];then
             for project in ${_projects[${module}]};do
-                emphasize "status ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
+                emphasize "os ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
                 if [[ "${module}" =~ "log" ]]; then
                     pcmdrc "${_project_ip["${target_name},${project}"]}" "get_service_status bk-${module}-${project}"
                 else
@@ -118,7 +118,7 @@ case $module in
                 fi
             done
         else
-            emphasize "status ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
+            emphasize "os ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
             if [[ "${module}" =~ "log" ]]; then
                 pcmdrc "${_project_ip["${target_name},${project}"]}" "get_service_status bk-${module}-${project}"
             else
@@ -244,7 +244,7 @@ bk-gse-procmgr : running
 bk-gse-syncdata: running
 bk-gse-task    : running
 
-                      check job backend health
+                      health job backend health
 [1] 16:38:45 [SUCCESS] 10.10.26.75
 job-execute    : true
 job-backup     : true
@@ -264,7 +264,7 @@ job-analysis   : true
 job-gateway-management: true
 job-manage     : true
 
-                     check job frontend resource
+                     health job frontend resource
 [1] 16:38:46 [SUCCESS] 10.10.26.70
 -rw-r--r-- 1 blueking blueking 1795 Apr 13 11:31 /data/bkce/job/frontend/index.html
 [2] 16:38:46 [SUCCESS] 10.10.26.73
@@ -324,39 +324,39 @@ check_resolv_conf_127.0.0.1 [OK]`
 const status = `
 [1] 14:46:51 [SUCCESS] 10.10.26.72
 [2] 14:46:52 [SUCCESS] 10.10.26.75
-bk-cmdb-core.service            inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-operation.service       inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-auth.service            inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-event.service           inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-datacollection.service  inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-cloud.service           inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-web.service             inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-host.service            inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-proc.service            inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-task.service            inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-admin.service           inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-api.service             inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
+bk-cmdb-core.service            inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-operation.service       inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-auth.service            inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-event.service           inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-datacollection.service  inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-cloud.service           inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-web.service             inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-host.service            inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-proc.service            inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-task.service            inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-admin.service           inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-api.service             inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
 bk-cmdb-cache.service           deactivating  (stop-sigterm) 1min 4s ago (cmdb_cacheservi)
-bk-cmdb-topo.service            inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
+bk-cmdb-topo.service            inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
 [3] 14:46:52 [SUCCESS] 10.10.26.70
 [4] 14:46:52 [SUCCESS] 10.10.26.69
 [5] 14:46:52 [SUCCESS] 10.10.26.73
 [6] 14:46:52 [SUCCESS] 10.10.26.74
 [7] 14:46:53 [SUCCESS] 10.10.26.71
-bk-cmdb-core.service                    inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-operation.service               inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-auth.service                    inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-event.service                   inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
+bk-cmdb-core.service                    inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-operation.service               inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-auth.service                    inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-event.service                   inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
 bk-cmdb-datacollection.service          deactivating  (stop-sigterm) 1min 4s ago (cmdb_datacollec)
-bk-cmdb-cloud.service                   inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-web.service                     inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-host.service                    inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-proc.service                    inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-task.service                    inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-admin.service                   inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-api.service                     inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-cache.service                   inactive      (dead) 59s ago (code=exited, status=0/SUCCESS)
-bk-cmdb-topo.service                    inactive      (dead) 1min 0s ago (code=exited, status=0/SUCCESS)
+bk-cmdb-cloud.service                   inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-web.service                     inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-host.service                    inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-proc.service                    inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-task.service                    inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-admin.service                   inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-api.service                     inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-cache.service                   inactive      (dead) 59s ago (code=exited, os=0/SUCCESS)
+bk-cmdb-topo.service                    inactive      (dead) 1min 0s ago (code=exited, os=0/SUCCESS)
 [1] 14:46:53 [SUCCESS] 10.10.26.72
 [2] 14:46:53 [SUCCESS] 10.10.26.75
 [3] 14:46:53 [SUCCESS] 10.10.26.69

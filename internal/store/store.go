@@ -2,6 +2,8 @@ package store
 
 //存储层抽象接口
 
-type CmdFactory interface {
-	Check() CheckCmd
+type StoreFactory interface {
+	Health() HealthCmd
+	Saas() SaasCmd
+	OsHealth() OsHealthCmd
 }

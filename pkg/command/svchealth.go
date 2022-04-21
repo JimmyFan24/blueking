@@ -21,9 +21,9 @@ case $MODULE in
     paas|cmdb) $PCMD -m "$MODULE" "$SELF_DIR/health_check/check_consul_svc_health.sh ^${MODULE}-" ;;
     gse) $PCMD -m gse '$CTRL_DIR/health_check/check_gse.sh' ;;
     job) 
-        step "check job backend health"
+        step "health job backend health"
         $PCMD -m job '$CTRL_DIR/health_check/check_job.sh'
-        step "check job frontend resource"
+        step "health job frontend resource"
         $PCMD -m nginx 'runuser -u blueking -- ls -l $BK_HOME/job/frontend/index.html'
         ;;
     consul) $PCMD -m all '$CTRL_DIR/health_check/check_consul_resolv.sh' ;;
@@ -153,7 +153,7 @@ case $module in
         source <(/opt/py36/bin/python ${SELF_DIR}/qq.py -p ${BK_PKG_SRC_PATH}/${target_name}/projects.yaml -P ${SELF_DIR}/bin/default/port.yaml)
         if [ -z "${project}" ];then
             for project in ${_projects[${module}]};do
-                emphasize "status ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
+                emphasize "os ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
                 if [[ "${module}" =~ "log" ]]; then
                     pcmdrc "${_project_ip["${target_name},${project}"]}" "get_service_status bk-${module}-${project}"
                 else
@@ -161,7 +161,7 @@ case $module in
                 fi
             done
         else
-            emphasize "status ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
+            emphasize "os ${module} ${project} on host: ${_project_ip["${target_name},${project}"]}"
             if [[ "${module}" =~ "log" ]]; then
                 pcmdrc "${_project_ip["${target_name},${project}"]}" "get_service_status bk-${module}-${project}"
             else

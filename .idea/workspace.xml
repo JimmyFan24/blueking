@@ -4,22 +4,33 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63f6cd33-2543-4b1e-b878-1f330607b920" name="Changes" comment="git test commit">
-      <change afterPath="$PROJECT_DIR$/pkg/command/cmd_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/command/moudleconfig.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/meta/v1/app.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/meta/v1/cmdb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/meta/v1/comconfig.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/meta/v1/job.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/meta/v1/paas.go" afterDir="false" />
+    <list default="true" id="63f6cd33-2543-4b1e-b878-1f330607b920" name="Changes" comment="finish main paas check logic">
+      <change afterPath="$PROJECT_DIR$/internal/controller/v1/os/basic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/service/v1/os.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/store/os.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/store/oshealth/basic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/store/oshealth/oshealthstore.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/meta/v1/os.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/controller/v1/check/paas.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controller/v1/check/paas.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/v1/check.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/v1/check.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/store/check.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/store/check.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/store/checkstore/paascheckstore.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/store/checkstore/paascheckstore.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/controller/v1/health/healthcontroller.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controller/v1/health/healthcontroller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/controller/v1/saas/saascontroller.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controller/v1/saas/saascontroller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/controller/v1/saas/status.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controller/v1/saas/status.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/controller/v1/status/status.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controller/v1/os/oshealthcontroller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/route.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/route.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/v1/health.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/v1/health.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/v1/saas.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/v1/saas.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/v1/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/v1/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/store/healthstore/checkstore.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/store/healthstore/checkstore.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/store/saasstore/saasstore.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/store/saasstore/saasstore.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/store/saasstore/status.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/store/saasstore/status.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/store/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/store/store.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/command/cmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/command/cmd.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/command/svchealth.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/command/svchealth.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/platform/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/platform/docs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/platform/platform.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/platform/platform.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,14 +93,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build bluekinghealth/cmd">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="bluekinghealthz" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build bluekinghealth/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="bluekinghealthz" />
       <working_directory value="$PROJECT_DIR$" />
@@ -97,15 +100,6 @@
       <package value="bluekinghealth/cmd" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/cmd/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="bluekinghealthz" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="go test bluekinghealth/pkg/command" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -144,7 +138,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git test commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="git test commit" />
+    <MESSAGE value="Merge branch 'master' of github.com:JimmyFan24/blueking" />
+    <MESSAGE value="paas check finish" />
+    <MESSAGE value="finish saas status funtions" />
+    <MESSAGE value="finish main paas check logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish main paas check logic" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
