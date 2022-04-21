@@ -1,8 +1,6 @@
 package main
 
-import (
-	"bluekinghealth/internal/server"
-)
+import "bluekinghealth/internal/server"
 
 func main() {
 	//1.check linux system environment
@@ -35,5 +33,9 @@ func main() {
 	*/
 	//3.check saas
 	server.NewServer().ServerRun()
+	//str := ` 16:24:08 [SUCCESS] 10.10.26.73 paas-apigw(http://10.10.26.73:8005/api/healthz/): true paas-appengine(http://10.10.26.73:8000/v1/healthz/): true paas-esb(http://10.10.26.73:8002/healthz/)   : true paas-login(http://10.10.26.73:8003/healthz/) : true paas-paas(http://10.10.26.73:8001/healthz/)  : true `
+	//reg,_ := regexp.Compile(`\n`)
+	//str_list := reg.Split(str,-1)
+	//fmt.Println(str_list[1])
 
 }

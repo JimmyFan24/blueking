@@ -1,19 +1,12 @@
 package command
 
-const CheckScript = `
-#!/usr/bin/env bash
-# Description: check service's health wrapper
-
+const CheckScript = `#!/usr/bin/env bash
 set -euo pipefail
 SELF_DIR=$(dirname "$(readlink -f "$0")")
-
-# 加载load_env和通用函数
 source "${SELF_DIR}"/tools.sh
-
 BK_PKG_SRC_PATH=${BK_PKG_SRC_PATH:-/data/src}
 BK_HOME=${BK_HOME:-/data/bkee}
 PCMD=${SELF_DIR}/pcmd.sh
-
 SUPPORT_MODULE=(bkssm bkiam usermgr paas cmdb gse job consul bklog dbcheck bkmonitorv3)
 usage () {
     echo "$0 <module>"
@@ -22,7 +15,6 @@ usage () {
     exit 1
 }
 [[ $# -ne 1 ]] && usage
-
 MODULE=$1
 case $MODULE in
     bkssm|bkiam|usermgr) $PCMD -m "${MODULE#bk}" "$SELF_DIR/health_check/check_consul_svc_health.sh $MODULE" ;;
@@ -48,10 +40,8 @@ case $MODULE in
         ;;
     *) usage ;;
 esac
-
 `
-const Check_test = `
-#!/usr/bin/env bash
+const Check_test = `#!/usr/bin/env bash 
 echo $1`
 const StatusScript = `
 #!/usr/bin/env bash
@@ -196,7 +186,7 @@ case $module in
         ;;
     paas_plugins|paas_plugin)
         pcmdrc "${BK_PAAS_IP0}" "get_service_status bk-paas-plugins-log-alert"
-        pcmdrc paas "get_service_status bk-logstash-paas-app-log  bk-filebeat@paas_esb_api" 
+        pcmdrc paas "get_service_status bk-logstash-paas-meta-log  bk-filebeat@paas_esb_api" 
         if ! [ -z "${BK_APPT_IP_COMMA}" ]; then
             pcmdrc appt "get_service_status bk-filebeat@celery  bk-filebeat@store bk-filebeat@django bk-filebeat@java bk-filebeat@uwsgi"
         fi

@@ -2,7 +2,9 @@ package v1
 
 import (
 	"bluekinghealth/internal/store"
+	metav1 "bluekinghealth/pkg/meta/v1"
 	"context"
+	"encoding/json"
 	"github.com/sirupsen/logrus"
 	"regexp"
 )
@@ -21,35 +23,45 @@ func newCheckService(srv *service) *checkSrv {
 	logrus.Info("building check service implement whit given check factory")
 	return &checkSrv{component: srv.Component}
 }
+
 //service impl
 func (c *checkSrv) PaasCheck(ctx context.Context) ([]string, error) {
 	//调用store层
 	logrus.Info("use paas check service  implement func to use check store ")
-	data, err := c.component.Check().PaasCheckCmd(ctx)
+	//新建paasapp
+	paas := metav1.NewApp("paas")
+	_, err := c.component.Check().PaasCheckCmd(ctx, paas)
 	if err != nil {
 		logrus.Error("service paascheck failed")
 		return nil, err
 	}
-	//处理返回的data
 
-	re1 := `\[\d\]`
-	re := `[ ]\d{1,}.\d{1,}.\d{1,}.\d{1,}`
-
-	reg,e := regexp.Compile(re1)
-	if e != nil{
-		logrus.Errorf("re compile failed:%v",err)
+	//返回的paas实例已经修改状态,可以生成json返回
+	var result = []string{}
+	var resultJson []byte
+	for _, p := range paas {
+		resultJson, err = json.Marshal(p)
+		if err != nil {
+			logrus.Errorf("josn marshal failed:%v", err)
+		}
+		result = append(result, string(resultJson))
 	}
-	ip_list :=reg.MatchString()
 
-	logrus.Infof("service paascheck success,and the data is :%v", data[0])
-	return string(ip_list), nil
+	logrus.Infof("service frame :print result json:%s", string(resultJson))
+	return result, nil
 }
 
 func (c *checkSrv) CmdbCheck(ctx context.Context) ([]string, error) {
-	data,err := c.component.Check().CmdbCheckCmd(ctx)
-	if err != nil{
+	data, err := c.component.Check().CmdbCheckCmd(ctx)
+	if err != nil {
 		logrus.Error("service cmdbcheck failed")
 		return nil, err
 	}
-	return data, nil
+	//拿到脚本执行结果,开始处理数据
+
+	return []string{string(data)}, nil
+}
+func dataReg(str string) []string {
+	reg1, _ := regexp.Compile(`\n`)
+	return reg1.Split(str, -1)
 }

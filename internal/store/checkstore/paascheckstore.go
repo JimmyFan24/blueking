@@ -2,10 +2,10 @@ package checkstore
 
 import (
 	"bluekinghealth/internal/store"
-	"bluekinghealth/pkg/platform"
+	cmd "bluekinghealth/pkg/command"
+	metav1 "bluekinghealth/pkg/meta/v1"
 	"context"
 	"github.com/sirupsen/logrus"
-	//cmd "bluekinghealth/pkg/command"
 )
 
 //实现check子接口
@@ -21,18 +21,18 @@ type CheckComponent struct {
 	name string
 }
 
-func (p *CheckComponent) PaasCheckCmd(ctx context.Context) ([]byte, error) {
-	//1.执行脚本
-	//paascheckresult,err := cmd.ExecCmd("paas")
-	/*if err != nil{
-		logrus.Errorf("paascheckcmd exec failed..",err)
-		return nil, err
-	}*/
+func (p *CheckComponent) PaasCheckCmd(ctx context.Context, app []*metav1.App) (string, error) {
+	for _, a := range app {
+		logrus.Info("store cmd check loop")
+		logrus.Info(a)
+		err := cmd.BlueKingCmd(a, "check")
+		if err != nil {
+			return "", err
+		}
+		logrus.Info("finally,use check store  implement func to exec and return data")
 
-	var data = []byte(platform.PaasDataTest)
-
-	logrus.Info("finally,use check store  implement func to exec and return data")
-	return data, nil
+	}
+	return "", nil
 }
 
 func (p *CheckComponent) CmdbCheckCmd(ctx context.Context) ([]byte, error) {

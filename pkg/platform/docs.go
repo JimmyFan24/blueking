@@ -143,7 +143,7 @@ case $module in
         ;;
     paas_plugins|paas_plugin)
         pcmdrc "${BK_PAAS_IP0}" "get_service_status bk-paas-plugins-log-alert"
-        pcmdrc paas "get_service_status bk-logstash-paas-app-log  bk-filebeat@paas_esb_api" 
+        pcmdrc paas "get_service_status bk-logstash-paas-meta-log  bk-filebeat@paas_esb_api" 
         if ! [ -z "${BK_APPT_IP_COMMA}" ]; then
             pcmdrc appt "get_service_status bk-filebeat@celery  bk-filebeat@store bk-filebeat@django bk-filebeat@java bk-filebeat@uwsgi"
         fi

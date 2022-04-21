@@ -13,7 +13,6 @@ func (c *CheckController) PaasCheck(context *gin.Context) {
 		context.JSON(400, "paascheck response json failed")
 	}
 
-	context.JSON(200, data[0])
+	context.JSON(200, data)
 	return
 }
-
